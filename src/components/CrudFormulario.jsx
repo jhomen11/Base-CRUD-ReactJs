@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const CrudFormulario = ({
   crearData,
@@ -10,6 +10,14 @@ const CrudFormulario = ({
 
   //state que guarda lo que se escribe en el formulario
   const [datos, setDatos] = useState(formInicial);
+  
+  useEffect(() => {
+    if(dataToEdit){
+    setDatos(dataToEdit)
+    }else{
+      setDatos(formInicial)
+    }
+  }, [dataToEdit])
 
   //state para manejar los errores del formulario
   const [error, setError] = useState(false);

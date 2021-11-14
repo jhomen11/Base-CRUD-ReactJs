@@ -1,15 +1,15 @@
 import React from "react";
 
-const CrudFilaTabla = ({ el }) => {
-    
+const CrudFilaTabla = ({ el, setDataToEdit, eliminarData }) => {
+    let {name, age, id} = el
   return (
     <>
       <tr>
-        <td>{el.name}</td>
-        <td>{el.age}</td>
+        <td>{name}</td>
+        <td>{age}</td>
         <td>
-          <button>Editar</button>
-          <button>Eliminar</button>
+          <button onClick={()=>setDataToEdit(el)}>Editar</button>
+          <button onClick={()=>eliminarData(id)}>Eliminar</button>
         </td>
       </tr>
     </>

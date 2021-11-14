@@ -1,7 +1,7 @@
 import React from "react";
 import CrudFilaTabla from "./CrudFilaTabla";
 
-const CrudTabla = ({ dbInicial }) => {
+const CrudTabla = ({ dbInicial, setDataToEdit, eliminarData }) => {
   return (
     <div>
       <table>
@@ -14,7 +14,12 @@ const CrudTabla = ({ dbInicial }) => {
         </thead>
         <tbody>
           {dbInicial.map((el) => (
-            <CrudFilaTabla key={el.id} el={el} />
+            <CrudFilaTabla
+              key={el.id}
+              el={el}
+              setDataToEdit={setDataToEdit}
+              eliminarData={eliminarData}
+            />
           ))}
         </tbody>
       </table>

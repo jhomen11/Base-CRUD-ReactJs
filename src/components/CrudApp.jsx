@@ -19,12 +19,18 @@ const CrudApp = () => {
 
   //funcion que recibe los datos del formulario y los guarda en el state principal
   const crearData = (datos) => {
-    datos.id=Date.now()
-    console.log(datos);
+    datos.id = Date.now();
     setFamilia([...familia, datos]);
   };
+/* funcion que edita la data que viene del formulario, creamos un nuevo array donde se almacenara la data editada,
+recorremos el array original y si el id del elemnto del array original es igual al id de la data editada la sustituye,
+en caso contrario lo deja igual */
+  const editarData = (data) => {
+    let dataEditada = familia.map(el => el.id === data.id ? data : el)
+    setFamilia(dataEditada)
+  };
+    
 
-  const editarData = (data) => {};
 
   const eliminarData = (id) => {};
 
@@ -37,7 +43,12 @@ const CrudApp = () => {
         setDataToEdit={setDataToEdit}
         dataToEdit={dataToEdit}
       />
-      <CrudTabla dbInicial={familia} eliminarData={eliminarData} />
+      <CrudTabla
+        dbInicial={familia}
+        eliminarData={eliminarData}
+        setDataToEdit={setDataToEdit}
+        eliminarData={eliminarData}
+      />
     </div>
   );
 };
