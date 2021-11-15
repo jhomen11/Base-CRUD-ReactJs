@@ -10,23 +10,22 @@ const CrudFormulario = ({
 
   //state que guarda lo que se escribe en el formulario
   const [datos, setDatos] = useState(formInicial);
-  
-  useEffect(() => {
-    if(dataToEdit){
-    setDatos(dataToEdit)
-    }else{
-      setDatos(formInicial)
-    }
-  }, [dataToEdit])
-
   //state para manejar los errores del formulario
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (dataToEdit) {
+      setDatos(dataToEdit);
+    } else {
+      setDatos(formInicial);
+    }
+  }, [dataToEdit]);
 
   //funcion que guarda en el state los datos del formulario
   const handleChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
   };
-
+  //funcion que procesa la informacion del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -38,7 +37,7 @@ const CrudFormulario = ({
     setError(false);
 
     /* preguntamos si los datos traen un id null, usamos la funcion crearData para pasar los datos,
-    si no usamos la editarData y le pasamos los datos a editar */
+    si no usamos la funcion editarData y le pasamos los datos a editar */
     if (datos.id === null) {
       crearData(datos);
     } else {
@@ -58,7 +57,7 @@ const CrudFormulario = ({
     <div>
       {error ? <p>Todos los campos son obligatorios</p> : null}
       <form onSubmit={handleSubmit}>
-        <h4>Agregar Familiar</h4>
+        <h4>{dataToEdit ? "Editar Familiar" : "Agregar Familiar"}</h4>
         <input
           type="text"
           autoComplete="off"
