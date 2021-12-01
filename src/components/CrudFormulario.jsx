@@ -54,30 +54,53 @@ const CrudFormulario = ({
   };
 
   return (
-    <div>
-      {error ? <p>Todos los campos son obligatorios</p> : null}
+    <>
+      {error ? <div className="alert alert-danger">Todos los campos son obligatorios</div> : null}
       <form onSubmit={handleSubmit}>
         <h4>{dataToEdit ? "Editar Familiar" : "Agregar Familiar"}</h4>
-        <input
-          type="text"
-          autoComplete="off"
-          name="name"
-          placeholder="Ingresa el Nombre"
-          onChange={handleChange}
-          value={datos.name}
-        />
-        <input
-          type="number"
-          autoComplete="off"
-          name="age"
-          placeholder="Edad"
-          onChange={handleChange}
-          value={datos.age}
-        />
-        <input type="submit" />
-        <input type="reset" value="Limpiar" onClick={handleReset} />
+
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Nombre
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            autoComplete="off"
+            id="name"
+            name="name"
+            placeholder="Ingresa el Nombre"
+            onChange={handleChange}
+            value={datos.name}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="age" className="form-label">
+            Edad
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="age"
+            autoComplete="off"
+            name="age"
+            placeholder="Edad"
+            onChange={handleChange}
+            value={datos.age}
+          />
+        </div>
+        <div className="btn-group">
+          <input className="btn btn-outline-success" type="submit" />
+          <input
+            className="btn btn-outline-secondary"
+            type="reset"
+            value="Limpiar"
+            onClick={handleReset}
+          />
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 

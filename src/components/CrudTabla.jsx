@@ -3,8 +3,8 @@ import CrudFilaTabla from "./CrudFilaTabla";
 
 const CrudTabla = ({ dbInicial, setDataToEdit, eliminarData }) => {
   return (
-    <div>
-      <table>
+    <>
+      <table className="table table-hover">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -23,7 +23,7 @@ const CrudTabla = ({ dbInicial, setDataToEdit, eliminarData }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

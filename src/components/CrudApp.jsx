@@ -32,25 +32,31 @@ const CrudApp = () => {
   };
 
   const eliminarData = (id) => {
-    let dataEliminada = familia.filter(el => el.id !==id)
-    setFamilia(dataEliminada)
+    let dataEliminada = familia.filter((el) => el.id !== id);
+    setFamilia(dataEliminada);
   };
 
   return (
-    <div>
-      <h2>CRUD APP</h2>
-      <CrudFormulario
-        crearData={crearData}
-        editarData={editarData}
-        setDataToEdit={setDataToEdit}
-        dataToEdit={dataToEdit}
-      />
-      <CrudTabla
-        dbInicial={familia}
-        eliminarData={eliminarData}
-        setDataToEdit={setDataToEdit}
-        
-      />
+    <div className="container">
+          <h2 className="text-center my-3">CRUD APP</h2>
+      <div className="row">
+        <div className="col-12 col-md-6 p-3">
+          <CrudFormulario
+            crearData={crearData}
+            editarData={editarData}
+            setDataToEdit={setDataToEdit}
+            dataToEdit={dataToEdit}
+          />
+      </div>
+        <div className="col-12 col-md-6 p-3">
+
+          <CrudTabla
+            dbInicial={familia}
+            eliminarData={eliminarData}
+            setDataToEdit={setDataToEdit}
+          />
+        </div>
+        </div>
     </div>
   );
 };
